@@ -1,0 +1,61 @@
+class VNumbers:   
+    def revnums(number: int = 0, rangenums=None):
+        if number is not int:
+            raise ValueError('No other data types except Int')
+        
+        if rangenums is True:
+            if number > 0:
+                return [-abs(neg_num) for neg_num in range(1, number+1)]
+            
+            return [neg_num for neg_num in range(1, abs(number)+1)] if number < 0 else 0
+            
+        return abs(number) if number <= 0 else -abs(number)
+                             
+                             
+    def evenoddnums(number: int = 0, option=False, choice=None):
+        if number is not int:
+            raise ValueError('No other data types except Int')
+        
+        if option:
+            if choice is True:
+                return [num for num in range(1, number+1) if num%2 == 0]
+            
+            return [num for num in range(1, number+1) if num%2 != 0]
+        
+        return True if number%2 == 0 else False
+        
+        
+    def fibnum(number:int = 0):
+        if number is not int:
+            raise ValueError('No other data types except Int')
+        
+        list_of_fib_nums = []
+        a, b = 0, 1
+        while number != 0:
+            number -= 1
+            list_of_fib_nums.append(a)
+            a, b = b, a+b
+            
+        return list_of_fib_nums
+
+        
+    def binnums(number: int = 0):
+        if number is not int:
+            raise ValueError('No other data types except Int')
+        bin_string = ''
+        start_count_bin = [1, 2]
+        
+        while start_count_bin[-1] <= number:
+            start_count_bin.append(start_count_bin[-1]*2)
+        else:
+            start_count_bin.pop()
+        
+        for v in start_count_bin[::-1]:
+            if number >= v:
+                number -= v
+                bin_string += '1'
+            else:
+                bin_string += '0'
+                
+        return bin_string
+    
